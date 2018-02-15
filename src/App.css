@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.App {
+  text-align: center;
+}
+.Search {
+  /*padding-top: 25%;*/
+}
+.Results {
+  display: flex;
+}
+.List {
+  width: 50vw;
+  height: 80vh;
+}
