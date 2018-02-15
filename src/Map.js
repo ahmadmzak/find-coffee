@@ -45,7 +45,8 @@ class Map extends Component {
       streetViewControlOptions: {
         position: window.google.maps.ControlPosition.LEFT_TOP
       },
-      fullscreenControl: true
+      fullscreenControl: true,
+      gestureHandling: "cooperative"
     });
 
     map.addListener("dragend", e => {
@@ -63,6 +64,7 @@ class Map extends Component {
   callBack = (results, status) => {
     let markers = [];
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      this.props.onNewResults(results);
       for (let i = 0; i < results.length; i++) {
         markers.push(this.createMarker(results[i], this.state.map));
       }
@@ -88,7 +90,6 @@ class Map extends Component {
   };
 
   clearMarkers = () => {
-    console.log("clearing " + this.state.markers.length + " markers");
     for (let m in this.state.markers) {
       this.state.markers[m].setMap(null);
     }
@@ -114,7 +115,8 @@ class Map extends Component {
   render() {
     return (
       <div
-        style={{ width: "50vw", height: "96vh" }}
+        className="Map"
+        style={{ width: "50vw", height: "95vh" }}
         ref={r => {
           this.map = r;
         }}

@@ -5,13 +5,18 @@
 .App {
   text-align: center;
 }
-.Search {
-  /*padding-top: 25%;*/
-}
-.Results {
+.container {
   display: flex;
 }
-.List {
+.Search {
+  text-align: center;
+}
+.Results {
   width: 50vw;
   height: 80vh;
+}
+.Map {
+  position: fixed;
+  margin-top: 5vh;
+  right: 0;
 }

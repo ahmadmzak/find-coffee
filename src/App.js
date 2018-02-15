@@ -8,10 +8,10 @@ import "./App.css";
 class App extends Component {
   state = {
     latlng: null,
-    dragLatLng: null,
     location: "",
     dragged: false,
-    search: false
+    search: false,
+    results: []
   };
 
   componentDidMount() {
@@ -78,7 +78,7 @@ class App extends Component {
     let latlng;
     let location = "";
     if (this.state.dragged) {
-      latlng = this.state.dragLatLng;
+      latlng = this.state.latlng;
       location = await this.latLngToLoc(latlng);
     } else {
       latlng = await this.locToLatLng(this.state.location);
@@ -88,7 +88,11 @@ class App extends Component {
   };
 
   handleNewLatLng = latlng => {
-    this.setState({ dragLatLng: latlng, dragged: true, location: "" });
+    this.setState({ latlng, dragged: true, location: "" });
+  };
+
+  handleNewResults = results => {
+    this.setState({ results });
   };
 
   /*render() {
@@ -131,13 +135,20 @@ class App extends Component {
           onInputChange={this.handleInputChange}
         />
         {this.state.search ? (
-          <div>
-            <Result />
-            <Map
-              latlng={this.state.latlng}
-              onRef={ref => (this.map = ref)}
-              onNewLatLng={this.handleNewLatLng}
-            />
+          <div className="container">
+            <ul className="Results">
+              {this.state.results.map((res, idx) => (
+                <Result result={res} idx={idx} key={res.place_id} />
+              ))}
+            </ul>
+            <div className="Map">
+              <Map
+                latlng={this.state.latlng}
+                onRef={ref => (this.map = ref)}
+                onNewLatLng={this.handleNewLatLng}
+                onNewResults={this.handleNewResults}
+              />
+            </div>
           </div>
         ) : null}
       </div>
