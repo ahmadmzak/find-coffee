@@ -136,16 +136,24 @@ class App extends Component {
       />
     );
     return (
-      <div>
+      <div className="app">
         {this.state.search ? (
           <div className="top-bar">
-            <div className="bar">
-              <h1 className="brand">FIND COFFEE</h1>
+            <h1 className="brand">FIND COFFEE</h1>
+            {SearchBar}
+          </div>
+        ) : (
+          <div className="bg">
+            <div
+              style={{
+                backgroundColor: "black",
+                opacity: "0.8",
+                padding: "5px"
+              }}
+            >
               {SearchBar}
             </div>
           </div>
-        ) : (
-          <div className="bg">{SearchBar}</div>
         )}
         {this.state.search ? (
           <div className="container">

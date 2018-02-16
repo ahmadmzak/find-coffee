@@ -30,7 +30,7 @@ class Map extends Component {
     const defaultZoom = 4;
     const map = new window.google.maps.Map(this.map, {
       center: this.props.latlng || defaultCenter,
-      zoom: this.props.latlng ? 13 : defaultZoom,
+      zoom: this.props.latlng ? 12 : defaultZoom,
       mapTypeControl: true,
       mapTypeControlOptions: {
         style: window.google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
@@ -66,7 +66,12 @@ class Map extends Component {
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       this.props.onNewResults(results);
       for (let i = 0; i < results.length; i++) {
-        markers.push(this.createMarker(results[i], this.state.map));
+        if (i === 0) {
+          this.state.map.setCenter(results[i].geometry.location);
+        }
+        if (!results[i].permanently_closed) {
+          markers.push(this.createMarker(results[i], this.state.map));
+        }
       }
       this.setState({
         markers
@@ -102,11 +107,19 @@ class Map extends Component {
     const service = new window.google.maps.places.PlacesService(this.state.map);
     this.clearMarkers();
     this.state.map.setCenter(latlng);
-    service.nearbySearch(
+    /*service.nearbySearch(
       {
         location: latlng,
         radius: 8000,
         type: ["cafe"]
+      },
+      this.callBack
+    );*/
+    service.textSearch(
+      {
+        location: latlng,
+        radius: 8000,
+        query: "coffee"
       },
       this.callBack
     );
@@ -115,7 +128,7 @@ class Map extends Component {
   render() {
     return (
       <div
-        style={{ width: "50vw", height: "95vh" }}
+        className="gmap"
         ref={r => {
           this.map = r;
         }}

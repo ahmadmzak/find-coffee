@@ -2,9 +2,6 @@
   margin: 0;
   padding: 0;
 }
-.app {
-  text-align: center;
-}
 .container {
   display: flex;
 }
@@ -27,6 +24,10 @@
   position: fixed;
   margin-top: 5vh;
   right: 0;
+}
+.gmap {
+  width: 50vw;
+  height: 95vh;
 }
 .rating {
   background-color: black;
@@ -54,7 +55,7 @@
 }
 .bar {
   display: flex;
-  width: 40vw;
+  width: 60vw;
   align-items: center;
   justify-content: space-between;
 }
@@ -62,6 +63,7 @@
   padding: 5px;
   margin-right: 15px;
   color: white;
+  font-size: 3vmin;
 }
 .search > button {
   border: white 1px solid;
@@ -82,7 +84,42 @@
   width: 100vw;
   height: 100vh;
 }
+.address {
+  margin-top: 16px;
+}
 hr {
   border-top: 1px solid #8c8b8b;
   width: 50vw;
+}
+@media (max-width: 768px) {
+  .results,
+  .result,
+  .gmap {
+    width: 100vw;
+    padding: 0;
+  }
+  .gmap {
+    height: 40vh;
+  }
+  .results {
+    margin-top: 45vh;
+    height: 45vh;
+  }
+  .container {
+    flex-direction: column;
+  }
+  hr,
+  .details {
+    width: 100vw;
+  }
+  .details {
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .result > img {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+  }
 }

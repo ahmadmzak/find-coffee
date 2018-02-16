@@ -20,7 +20,7 @@ class Result extends Component {
               <h3 className="title">{`${this.props.idx + 1}. ${res.name}`}</h3>
               <h4 className="rating">{`${res.rating}`}</h4>
             </div>
-            <div className="address">{`${res.vicinity}`}</div>
+            <div className="address">{`${res.formatted_address}`}</div>
             <br />
             <img
               src={res.icon}
