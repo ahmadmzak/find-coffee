@@ -26,8 +26,8 @@ class Map extends Component {
   }
 
   initMap = () => {
-    const defaultCenter = { lat: 36.2096542, lng: -100.7284458 };
-    const defaultZoom = 4;
+    const defaultCenter = { lat: 40.7590403, lng: -74.0392711 };
+    const defaultZoom = 12;
     const map = new window.google.maps.Map(this.map, {
       center: this.props.latlng || defaultCenter,
       zoom: this.props.latlng ? 12 : defaultZoom,

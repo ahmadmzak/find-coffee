@@ -64,13 +64,15 @@
   margin-right: 15px;
   color: white;
   font-size: 3vmin;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
-.search > button {
-  border: white 1px solid;
-  background: transparent;
-  color: white;
+.search > button,
+.search > input {
   padding: 3px;
   margin-left: 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: white;
 }
 .bg {
   display: flex;
@@ -86,6 +88,17 @@
 }
 .address {
   margin-top: 16px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5vmin;
+}
+.main > h1 {
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
 hr {
   border-top: 1px solid #8c8b8b;

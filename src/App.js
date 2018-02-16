@@ -77,7 +77,7 @@ class App extends Component {
 
   handleSearch = async () => {
     let latlng;
-    let location = "";
+    let location = this.state.location;
     if (this.state.dragged) {
       latlng = this.state.latlng;
       location = await this.latLngToLoc(latlng);
@@ -85,7 +85,9 @@ class App extends Component {
       latlng = await this.locToLatLng(this.state.location);
     }
     this.setState({ latlng, location, dragged: false, search: true });
-    if (this.map && window.google) this.map.getResults(latlng);
+    if (this.map && window.google) {
+      this.map.getResults(latlng);
+    }
   };
 
   handleNewLatLng = latlng => {
@@ -96,36 +98,6 @@ class App extends Component {
     this.setState({ results });
   };
 
-  /*render() {
-    return (
-      <Router>
-        <div className="App">
-          <Route
-            path="/"
-            render={() => (
-              <Search
-                moved={this.state.moved}
-                location={this.state.location}
-                onInputChange={this.handleInputChange}
-                onNewLocation={this.locToLatLng}
-              />
-            )}
-          />
-          <Route
-            path="/results"
-            render={() => (
-              <Results
-                moved={this.state.moved}
-                onRef={ref => (this.results = ref)}
-                latlng={{ lat: this.state.lat, lng: this.state.lng }}
-                onCenterChange={this.handleMove}
-              />
-            )}
-          />
-        </div>
-      </Router>
-    );
-  }*/
   render() {
     const SearchBar = (
       <Search
@@ -144,13 +116,8 @@ class App extends Component {
           </div>
         ) : (
           <div className="bg">
-            <div
-              style={{
-                backgroundColor: "black",
-                opacity: "0.8",
-                padding: "5px"
-              }}
-            >
+            <div className="main">
+              <h1>FIND COFFEE</h1>
               {SearchBar}
             </div>
           </div>
