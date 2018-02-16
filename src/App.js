@@ -4,6 +4,7 @@ import Search from "./Search";
 import Result from "./Result";
 import Map from "./Map";
 import "./App.css";
+import "./bg.jpg";
 
 class App extends Component {
   state = {
@@ -126,22 +127,34 @@ class App extends Component {
     );
   }*/
   render() {
+    const SearchBar = (
+      <Search
+        search={this.state.search}
+        location={this.state.location}
+        onSearch={this.handleSearch}
+        onInputChange={this.handleInputChange}
+      />
+    );
     return (
       <div>
-        <Search
-          search={this.state.search}
-          location={this.state.location}
-          onSearch={this.handleSearch}
-          onInputChange={this.handleInputChange}
-        />
+        {this.state.search ? (
+          <div className="top-bar">
+            <div className="bar">
+              <h1 className="brand">FIND COFFEE</h1>
+              {SearchBar}
+            </div>
+          </div>
+        ) : (
+          <div className="bg">{SearchBar}</div>
+        )}
         {this.state.search ? (
           <div className="container">
-            <ul className="Results">
+            <ul className="results">
               {this.state.results.map((res, idx) => (
                 <Result result={res} idx={idx} key={res.place_id} />
               ))}
             </ul>
-            <div className="Map">
+            <div className="map">
               <Map
                 latlng={this.state.latlng}
                 onRef={ref => (this.map = ref)}

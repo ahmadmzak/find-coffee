@@ -26,7 +26,7 @@ class Search extends Component {
   }*/
   render() {
     return (
-      <div className="Search">
+      <div className="search">
         <input
           type="text"
           placeholder={this.props.search ? "Search Here" : "Coffee Near..."}

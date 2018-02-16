@@ -115,7 +115,6 @@ class Map extends Component {
   render() {
     return (
       <div
-        className="Map"
         style={{ width: "50vw", height: "95vh" }}
         ref={r => {
           this.map = r;
