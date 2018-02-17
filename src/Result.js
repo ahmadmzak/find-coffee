@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import blank from "./blank.png";
 
 class Result extends Component {
   render() {
-    let url = null; //"http://via.placeholder.com/100x100";
+    let url = blank;
     const res = this.props.result;
     let rating = res.rating;
     if (res.photos && res.photos[0] !== undefined) {
@@ -16,22 +17,7 @@ class Result extends Component {
     return (
       <li>
         <div className="result">
-          {url ? (
-            <img
-              src={url}
-              alt="pic"
-              style={{ width: "100px", height: "100px", borderRadius: "5px" }}
-            />
-          ) : (
-            <div
-              style={{
-                backgroundColor: "black",
-                width: "100px",
-                height: "100px",
-                borderRadius: "5px"
-              }}
-            />
-          )}
+          <img className="result-img" src={url} alt="pic" />
           <div className="details">
             <div className="title-head">
               <h3 className="title">{`${this.props.idx + 1}. ${res.name}`}</h3>

@@ -100,12 +100,19 @@
 .main > h1 {
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
+.result-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+}
 hr {
   border-top: 1px solid #8c8b8b;
   width: 50vw;
 }
 @media (max-width: 768px) {
-  .results,
+  .search > input {
+    width: 100px;
+  }
   .result,
   .gmap {
     width: 100vw;
@@ -113,6 +120,8 @@ hr {
   }
   .gmap {
     height: 40vh;
+    margin: 0;
+    padding-right: 2px;
   }
   .results {
     margin-top: 45vh;
@@ -121,18 +130,18 @@ hr {
   .container {
     flex-direction: column;
   }
-  hr,
-  .details {
+  hr {
     width: 100vw;
   }
   .details {
-    padding-right: 15px;
+    width: calc(100vw - 140px);
+    padding-right: 12px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
-  .result > img {
+  .result-img {
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 15px;
+    padding-left: 12px;
   }
 }
